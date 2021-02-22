@@ -1,0 +1,10 @@
+.reg, .reg a{
+    text-decoration: none;
+    color: gray;
+}
+.reg a:hover {
+    color: white;
+}
+body {
+    padding-top: 75px;
+}

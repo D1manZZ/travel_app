@@ -1,0 +1,10 @@
+{% extends 'route/base.html' %}
+{% block content %}
+{% for i in cities %}
+<div class="card" style="margin: 0 auto 20px auto; padding-left: 20px;">
+  <div class="card-body">
+    {{ i }}
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
