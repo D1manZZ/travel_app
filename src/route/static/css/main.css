@@ -6,10 +6,6 @@
     color: white;
 }
 
-body {
-    padding-top: 75px;
-}
-
 .card-body {
     display: flex;
     justify-content: flex-end;
@@ -31,4 +27,29 @@ body {
     opacity: 1;
     transform: translateX(10%);
     transition: 0.5s;
+}
+
+.full_screen {
+    width: 100%;
+    height: 100vh;
+    padding-top: 75px;
+}
+
+.page {
+    padding-top: 75px;
+}
+
+.full_screen .city_stuff {
+    background: rgba(120, 153, 212, 0.8);
+    border-radius: 4px;
+    backdrop-filter: opacity(.3);
+    margin: 30px auto;
+    padding: 9px 15px;
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    color: white;
+}
+
+.back {
+    display: block;
+    margin: 0 auto;
 }
