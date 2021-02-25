@@ -2,7 +2,9 @@ from django.db import models
 
 
 class Cities(models.Model):
-    city = models.CharField('Город', max_length=50)
+    city = models.CharField('Город', max_length=50, unique=True)
+    description = models.TextField('Описание города', default='Информация появится чуть позже...')
+    photo = models.ImageField(upload_to='photos', default='photos/default_city.jpg')
 
     class Meta:
         verbose_name = 'Город'
@@ -20,6 +22,6 @@ class Trains(models.Model):
 
 
 class Routes(models.Model):
-    route_name = models.CharField('имя маршрута', max_length=30)
+    route_name = models.CharField('имя маршрута', max_length=30, unique=True)
     route_start = models.ForeignKey(Cities, related_name='Начало_маршрута', on_delete=models.CASCADE)
     route_end = models.ForeignKey(Cities, related_name='Конец_маршрута', on_delete=models.CASCADE)

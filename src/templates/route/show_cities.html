@@ -1,9 +1,13 @@
 {% extends 'route/base.html' %}
+{% load static %}
 {% block content %}
-{% for i in cities %}
-<div class="card" style="margin: 0 auto 20px auto; padding-left: 20px;">
+{% for city in cities %}
+<div class="card col-md-7 col-sm-12" style="margin: 0 auto 20px auto; height:300px; background-image: url('{{ city.photo.url }}'); background-size: cover;">
   <div class="card-body">
-    {{ i }}
+    <div class="stuff">
+    <h5 class="card-title animation">{{ city.city }}</h5>
+    <a href="#" class="btn btn-primary animation">Подробнее</a>
+    </div>
   </div>
 </div>
 {% endfor %}

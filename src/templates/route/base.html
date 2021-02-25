@@ -1,5 +1,6 @@
 <!doctype html>
 {% load static %}
+{% url 'cities' as cities_url %}
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,7 +19,7 @@
       <div class="navbar-collapse collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'cities' %}">Города</a>
+            <a class="nav-link {% if request.path == cities_url %} active {% endif %}" href="{% url 'cities' %}">Города</a>
           </li>
                     <li class="nav-item">
             <a class="nav-link" href="#">Поезда</a>
