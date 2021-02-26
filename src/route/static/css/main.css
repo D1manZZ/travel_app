@@ -53,3 +53,14 @@
     display: block;
     margin: 0 auto;
 }
+
+.add_city {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+
+.add_city a {
+    padding: 10px 25px;
+}
+

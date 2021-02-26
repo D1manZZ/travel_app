@@ -1,10 +1,11 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Cities(models.Model):
     city = models.CharField('Город', max_length=50, unique=True)
-    description = models.TextField('Описание города', default='Информация появится чуть позже...')
-    photo = models.ImageField(upload_to='photos', default='photos/default_city.jpg')
+    description = models.TextField('Описание города')
+    photo = models.ImageField(upload_to='photos')
 
     class Meta:
         verbose_name = 'Город'
@@ -12,6 +13,9 @@ class Cities(models.Model):
 
     def __str__(self):
         return self.city
+
+    def get_absolute_url(self):
+        return reverse('city', kwargs={'pk': self.id})
 
 
 class Trains(models.Model):
