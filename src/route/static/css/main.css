@@ -39,7 +39,7 @@
     padding-top: 75px;
 }
 
-.full_screen .city_stuff {
+.full_screen .city_stuff, .buttons {
     background: rgba(120, 153, 212, 0.8);
     border-radius: 4px;
     backdrop-filter: opacity(.3);
@@ -49,9 +49,8 @@
     color: white;
 }
 
-.back {
-    display: block;
-    margin: 0 auto;
+.back img {
+    width: 100%;
 }
 
 .add_city {
@@ -62,5 +61,26 @@
 
 .add_city a {
     padding: 10px 25px;
+}
+
+.buttons a {
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    margin: 0 auto;
+    border: none;
+}
+
+.a-wrapper {
+    text-align: center;
+}
+
+.buttons {
+    padding: 15px 0;
+}
+
+.del:hover {
+    transform: rotate(180deg);
+    transition: .3s;
 }
 

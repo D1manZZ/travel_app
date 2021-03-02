@@ -12,6 +12,21 @@
   </div>
 </div>
 {% endfor %}
+  <nav aria-label="Page navigation example" class="col-md-7 col-sm-12" style="margin: 0 auto;">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+    {% endif %}
+    {% for page in page_obj.paginator.page_range %}
+      {% if page_obj.number|add:3 > page and page_obj.number|add:-3 < page %}
+        <li class="page-item{% if page == page_obj.number %} active {% endif %}"><a class="page-link {% if page == page_obj.number %} current_page {% endif %}" href="?page={{ page }}">{{ page }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% endif %}
+  </ul>
+</nav>
 </div>
 <div class="add_city">
   <a href="{% url 'add_city' %}" class="btn btn-success">Добавить город</a>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import *
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
+from django.views.generic.edit import UpdateView
 from .forms import AddCity
 
 
@@ -8,9 +9,16 @@ def ez_life(request):
     return render(request, 'route/base.html')
 
 
-def show_cities(request):
-    cities = Cities.objects.all()
-    return render(request, 'route/show_cities.html', {'cities': cities})
+# def show_cities(request):
+#     cities = Cities.objects.all()
+#     return render(request, 'route/show_cities.html', {'cities': cities})
+
+
+class ShowCities(ListView):
+    model = Cities
+    paginate_by = 3
+    context_object_name = 'cities'
+    template_name = 'route/show_cities.html'
 
 
 def show_city(request, pk):
@@ -20,3 +28,9 @@ def show_city(request, pk):
 class AddCity(CreateView):
     template_name = 'route/add_city.html'
     form_class = AddCity
+
+
+class UpdateCity(UpdateView):
+    model = Cities
+    form_class = AddCity
+    template_name = 'route/update_city.html'

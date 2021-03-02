@@ -1,4 +1,5 @@
 {% extends 'route/base.html' %}
+{% load static %}
 {% block content %}
 <div class="full_screen" style="background-image: url('{{ city.photo.url }}'); background-size: cover;">
     <div class="container">
@@ -6,7 +7,17 @@
     <h2>{{ city.city }}</h2>
     <p>{{ city.description }}</p>
         </div>
-        <a href="{% url 'cities' %}" class="btn btn-primary back col-md-4 col-sm-12">Назад</a>
+        <div class="buttons row col-md-6 col-sm-12" style="margin: 0 auto;">
+            <div class="a-wrapper col-4">
+                <a href="{% url 'cities' %}" class="btn back"><img src="{% static 'img/left-arrow.svg' %}"></a>
+            </div>
+            <div class="a-wrapper col-4">
+                <a href="{% url 'update_city' city.pk %}" class="btn back col-4"><img src="{% static 'img/edit.svg' %}"></a>
+            </div>
+            <div class="a-wrapper col-4">
+                <a href="#" class="btn back col-4 del"><img src="{% static 'img/remove.svg' %}"></a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
