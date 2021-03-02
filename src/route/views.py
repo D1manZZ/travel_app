@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+
 from .models import *
-from django.views.generic import CreateView, ListView
-from django.views.generic.edit import UpdateView
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .forms import AddCity
 
 
@@ -34,3 +35,11 @@ class UpdateCity(UpdateView):
     model = Cities
     form_class = AddCity
     template_name = 'route/update_city.html'
+
+
+class DeleteCity(DeleteView):
+    model = Cities
+    success_url = reverse_lazy('cities')
+
+    def get(self, request, *args, **kwargs):
+        return self.post(request, *args, **kwargs)

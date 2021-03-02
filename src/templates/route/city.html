@@ -15,7 +15,7 @@
                 <a href="{% url 'update_city' city.pk %}" class="btn back col-4"><img src="{% static 'img/edit.svg' %}"></a>
             </div>
             <div class="a-wrapper col-4">
-                <a href="#" class="btn back col-4 del"><img src="{% static 'img/remove.svg' %}"></a>
+                <a href="{% url 'delete_city' city.pk %}" class="btn back col-4 del"><img src="{% static 'img/remove.svg' %}"></a>
             </div>
         </div>
     </div>
