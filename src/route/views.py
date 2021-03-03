@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 
 from .models import *
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
-from .forms import AddCity
+from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic.edit import UpdateView
+from .forms import AddCity, EditCity
 
 
 def ez_life(request):
@@ -33,8 +34,8 @@ class AddCity(CreateView):
 
 class UpdateCity(UpdateView):
     model = Cities
-    form_class = AddCity
-    template_name = 'route/update_city.html'
+    form_class = EditCity
+    template_name = 'route/cities_update_form.html'
 
 
 class DeleteCity(DeleteView):
