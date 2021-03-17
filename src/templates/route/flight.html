@@ -1,0 +1,41 @@
+{% extends 'route/base.html' %}
+{% load static %}
+{% block content %}
+<div class="full_screen">
+    <div class="container">
+        <div class="flight_stuff row">
+          <div class="city_start flys col-5" style="background: url('{{ flight.plain_start.photo.url }}'); background-size: cover; padding-top: 20%; position: relative;">
+            <div class="area_title">
+                <p class='z-monster' style="margin: 0;">{{ flight.plain_start.city }}</p>
+            </div>
+          </div>
+          <div class="city_middle col-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 3px;">
+              <img src="{% static 'img/right-arrow.svg' %}"  class='image-animation' style="width: 100px;">
+          </div>
+          <div class="city_end flys col-5" style="background: url('{{ flight.plain_end.photo.url }}'); background-size: cover; position: relative;">
+              <div class="area_title">
+                <p class='z-monster' style="margin: 0;">{{ flight.plain_end.city }}</p>
+            </div>
+          </div>
+      </div>
+        <div class="city_stuff">
+
+    <h2>{{ flight.plain_code }}</h2>
+    <p><b>Стартовый город:</b> <a style="color: white; text-decoration: none;" href="{% url 'city' flight.plain_start.pk %}">{{ flight.plain_start }}</a></p>
+    <p><b>Конечный город:</b> <a style="color: white; text-decoration: none;" href="{% url 'city' flight.plain_end.pk %}">{{ flight.plain_end }}</a></p>
+    <p><b>Длительность полёта:</b> {{ flight.trip_time }} минут</p>
+        </div>
+        <div class="buttons row col-md-6 col-sm-12" style="margin: 0 auto;">
+            <div class="a-wrapper col-4">
+                <a href="{% url 'flights'%}" class="btn back"><img src="{% static 'img/left-arrow.svg' %}"></a>
+            </div>
+            <div class="a-wrapper col-4">
+                <a href="{% url 'edit_flight' flight.pk %}" class="btn back col-4"><img src="{% static 'img/edit.svg' %}"></a>
+            </div>
+            <div class="a-wrapper col-4">
+                <a href="{% url 'delete_flight' flight.pk %}" class="btn back col-4 del"><img src="{% static 'img/remove.svg' %}"></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

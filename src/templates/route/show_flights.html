@@ -1,0 +1,49 @@
+{% extends 'route/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-8 col-sm-12 page" style="margin: 0 auto;">
+{% for flight in flights %}
+    <a href="{% url 'flight' flight.pk %}" class="hover-animation col-12" style="display: block; text-decoration: none; color: black;">
+<div class="col-md-10 col-sm-12" style="margin: 0 auto 40px auto;">
+  <div class="card-body" style="padding: 0;">
+      <div class="flight_stuff row">
+          <div class="city_start fly col-5" style="background: url('{{ flight.plain_start.photo.url }}'); background-size: cover; padding-top: 20%; position: relative;">
+            <div class="area_title">
+                <p class='z-monster' style="margin: 0;">{{ flight.plain_start.city }}</p>
+            </div>
+          </div>
+          <div class="city_middle col-2" style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 3px;">
+              <p class="card-title" style="margin: 0;">{{ flight.plain_code }}</p>
+              <img src="{% static 'img/right-arrow.svg' %}"  class='image-animation' style="width: 100px;">
+              <p style="margin: 0;">{{ flight.trip_time }} m</p>
+          </div>
+          <div class="city_end fly col-5" style="background: url('{{ flight.plain_end.photo.url }}'); background-size: cover; position: relative;">
+              <div class="area_title">
+                <p class='z-monster' style="margin: 0;">{{ flight.plain_end.city }}</p>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+    </a>
+{% endfor %}
+  <nav aria-label="Page navigation example" class="col-md-10 col-sm-12" style="margin: 0 auto;">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+    {% endif %}
+    {% for page in page_obj.paginator.page_range %}
+      {% if page_obj.number|add:3 > page and page_obj.number|add:-3 < page %}
+        <li class="page-item{% if page == page_obj.number %} active {% endif %}"><a class="page-link {% if page == page_obj.number %} current_page {% endif %}" href="?page={{ page }}">{{ page }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+    {% endif %}
+  </ul>
+</nav>
+</div>
+<div class="add_city">
+  <a href="{% url 'add_plane' %}" class="btn btn-success">Добавить рейс</a>
+</div>
+{% endblock %}

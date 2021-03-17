@@ -4,7 +4,7 @@
 <div class="col-md-8 col-sm-12 page" style="margin: 0 auto;">
 {% for city in cities %}
 <div class="card col-md-7 col-sm-12" style="margin: 0 auto 20px auto; height:300px; background-image: url('{{ city.photo.url }}'); background-size: cover;">
-  <div class="card-body">
+  <div class="card-body card-body_cities">
     <div class="stuff">
     <h5 class="card-title animation">{{ city.city }}</h5>
     <a href="{% url 'city' city.id %}" class="btn btn-primary animation">Подробнее</a>

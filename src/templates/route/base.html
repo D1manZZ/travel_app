@@ -22,7 +22,7 @@
             <a class="nav-link {% if request.path == cities_url %} active {% endif %}" href="{% url 'cities' %}">Города</a>
           </li>
                     <li class="nav-item">
-            <a class="nav-link" href="#">Поезда</a>
+            <a class="nav-link" href="{% url 'flights' %}">Рейсы</a>
           </li>
                     <li class="nav-item">
             <a class="nav-link" href="#">Маршруты</a>

@@ -1,0 +1,10 @@
+{% extends 'route/base.html' %}
+{% block content %}
+<div class="container page col-md-6">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary col-md-6 col-12" style="display: block; margin: 0 auto;">Добавить</button>
+    </form>
+</div>
+{% endblock %}
